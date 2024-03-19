@@ -10,7 +10,7 @@ COPY package-lock.json package-lock.json
 RUN sed -i '/"prepare":/d' package.json
 
 # Install production + optional express dependency
-RUN npm ci --omit=dev
+RUN npm install && npm ci --omit=dev
 RUN npm cache clean --force
 
 # Add everything else
