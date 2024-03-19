@@ -27,6 +27,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ref: master
 
       # Docker Image 构建环境
       - name: Set up QEMU
@@ -52,8 +54,8 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64,linux/arm/v7
-          # platforms: linux/amd64
+          # platforms: linux/amd64,linux/arm64,linux/arm/v7
+          platforms: linux/amd64
           push: true
           tags: |
             bloodstar/github-readme-stats:stable-${{ env.version }}
